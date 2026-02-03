@@ -21,49 +21,63 @@ public class ItemUtil {
 
     public ItemUtil setName(String name) {
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(name);
-        item.setItemMeta(meta);
+        if (meta != null) {
+            meta.setDisplayName(name);
+            item.setItemMeta(meta);
+        }
         return this;
     }
 
     public ItemUtil setLore(java.util.List<String> lore) {
         ItemMeta meta = item.getItemMeta();
-        meta.setLore(lore);
-        item.setItemMeta(meta);
+        if (meta != null) {
+            meta.setLore(lore);
+            item.setItemMeta(meta);
+        }
         return this;
     }
 
     public ItemUtil setUnbreakable() {
         ItemMeta meta = item.getItemMeta();
-        meta.setUnbreakable(true);
-        item.setItemMeta(meta);
+        if (meta != null) {
+            meta.setUnbreakable(true);
+            item.setItemMeta(meta);
+        }
         return this;
     }
 
     public ItemUtil addEnchantment(Enchantment enchantment, int level) {
         if (item.getType() == Material.ENCHANTED_BOOK) {
             EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
-            meta.addStoredEnchant(enchantment, level, true);
-            item.setItemMeta(meta);
+            if (meta != null) {
+                meta.addStoredEnchant(enchantment, level, true);
+                item.setItemMeta(meta);
+            }
         } else {
             ItemMeta meta = item.getItemMeta();
-            meta.addEnchant(enchantment, level, true);
-            item.setItemMeta(meta);
+            if (meta != null) {
+                meta.addEnchant(enchantment, level, true);
+                item.setItemMeta(meta);
+            }
         }
         return this;
     }
 
     public ItemUtil addItemFlag(ItemFlag flag) {
         ItemMeta meta = item.getItemMeta();
-        meta.addItemFlags(flag);
-        item.setItemMeta(meta);
+        if (meta != null) {
+            meta.addItemFlags(flag);
+            item.setItemMeta(meta);
+        }
         return this;
     }
 
     public ItemUtil setCustomModelData(int modelData) {
         ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(modelData);
-        item.setItemMeta(meta);
+        if (meta != null) {
+            meta.setCustomModelData(modelData);
+            item.setItemMeta(meta);
+        }
         return this;
     }
 
