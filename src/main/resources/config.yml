@@ -8,8 +8,15 @@
 # --------------------------------------------------
 
 # Change the cooldown when enabling/disabling PvP (seconds). Set to 0 to disable.
-enable-cooldown: 3
-disable-cooldown: 0
+enable-cooldown: 5
+disable-cooldown: 5
+
+# Cooldown to give weapon on player join (seconds). Set to 0 to give immediately.
+join-weapon-cooldown: 1
+
+# Wait for GUI/inventory to close before giving weapon (prevents conflicts with other plugins)
+# Set to false if you're not receiving the weapon
+wait-for-inventory-close: true
 
 # Respawn location
 respawn:
@@ -45,23 +52,43 @@ lang:
 # --------------------------------------------------
 # Item Customisation
 # --------------------------------------------------
+# You have 3 ways to customize items:
+# 1. Basic: Use 'material' with optional name, lore, enchantments
+# 2. Custom Model Data: Use 'custom_model_data' (like DeluxeHub) for resource pack textures
+# 3. ItemsAdder: Use 'itemsadder_id' for fully custom items
 
 items:
   weapon:
-    slot: 9 # Sword slot inside the player's inventory
-    material: DIAMOND_SWORD # Item to use as the sword
-    name: '&7> &#db86e6&lP&#da85d0&lv&#d984ba&lP &#d883a4&lS&#d8818d&lw&#d78077&lo&#d67f61&lr&#d57e4b&ld &7<' # Name of the item
-    lore: # Item description, shown when hovering over in inventory
-      - "&7Equip this sword to fight other players!"
-    enchantments:
-      - "sharpness:1"
+    slot: 7 # Sword slot inside the player's inventory
+    material: DIAMOND_SWORD # Item to use as the sword (ignored if itemsadder_id is set)
+    name: '&fLobby PvP Sword' # Name of the item
+    lore: [] # Lore lines for the weapon
+    # custom_model_data: 1337 # Custom model data for resource pack textures (like DeluxeHub)
+    # itemsadder_id: "yournamespace:custom_sword" # ItemsAdder custom item ID (overrides material)
+    # enchantments: # Optional enchantments
+    #   - "sharpness:1"
   helmet:
-    material: DIAMOND_HELMET # Item to use as the helmet
-    enchantments:
-      - "protection:1"
+    material: DIAMOND_HELMET # Item to use as the helmet (ignored if itemsadder_id is set)
+    # custom_model_data: 1001 # Custom model data for resource pack textures
+    # itemsadder_id: "yournamespace:custom_helmet" # ItemsAdder custom item ID (overrides material)
+    # name: '&ePvP Helmet' # Optional custom name (overrides ItemsAdder/resource pack name)
+    # lore: [] # Optional lore lines (overrides ItemsAdder lore)
+    # enchantments: [] # Optional enchantments (adds to ItemsAdder enchantments)
   chestplate:
-    material: DIAMOND_CHESTPLATE # Item to use as the chestplate
+    material: DIAMOND_CHESTPLATE # Item to use as the chestplate (ignored if itemsadder_id is set)
+    # custom_model_data: 1002 # Custom model data for resource pack textures
+    # itemsadder_id: "yournamespace:custom_chestplate" # ItemsAdder custom item ID (overrides material)
+    # name: '&ePvP Chestplate' # Optional custom name
+    # lore: [] # Optional lore lines
   leggings:
-    material: DIAMOND_LEGGINGS # Item to use as the leggings
+    material: DIAMOND_LEGGINGS # Item to use as the leggings (ignored if itemsadder_id is set)
+    # custom_model_data: 1003 # Custom model data for resource pack textures
+    # itemsadder_id: "yournamespace:custom_leggings" # ItemsAdder custom item ID (overrides material)
+    # name: '&ePvP Leggings' # Optional custom name
+    # lore: [] # Optional lore lines
   boots:
-    material: DIAMOND_BOOTS # Item to use as the boots
+    material: DIAMOND_BOOTS # Item to use as the boots (ignored if itemsadder_id is set)
+    # custom_model_data: 1004 # Custom model data for resource pack textures
+    # itemsadder_id: "yournamespace:custom_boots" # ItemsAdder custom item ID (overrides material)
+    # name: '&ePvP Boots' # Optional custom name
+    # lore: [] # Optional lore lines

@@ -16,18 +16,19 @@ public class HubPvPCommand implements CommandExecutor, TabCompleter {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+		if (!(sender.isOp())) return false;
+
 		if (args.length == 1) {
 			if (args[0].equalsIgnoreCase("reload")) {
-				HubPvP plugin = HubPvP.instance();
+				HubPvP plugin = HubPvP.getInstance();
 				plugin.reloadConfig();
-				plugin.pvpManager().loadItems();
+				plugin.getPvpManager().loadItems();
 				sender.sendMessage(StringUtil.colorize(plugin.getConfig().getString("lang.reloaded")));
-			} else {
-				sender.sendMessage(ChatColor.RED + "Invalid arguments. Use: /" + label + " <reload>");
+				return false;
 			}
-		} else {
-			sender.sendMessage(ChatColor.RED + "Invalid usage. Use: /" + label + " <args>");
 		}
+
+		sender.sendMessage(ChatColor.RED + "Invalid usage. Use: /" + label + " <args>");
 		return false;
 	}
 
